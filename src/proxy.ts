@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const protectedRoutes =  ['/profile', '/my-orders', '/wishlist', '/cart']
 const publicRoutes = ['/login', '/signup']
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
    const token = await getToken({req})
    if(protectedRoutes.includes(req.nextUrl.pathname)){
     if(token){
